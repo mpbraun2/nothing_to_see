@@ -1,0 +1,82 @@
+<h6> Hi (USER)</h6>
+<div id=topbar>
+    <a href="/shoes">Go to All Products</a>
+    <a href="/">Log Out</a>
+</div>
+
+<h4>Sell Product</h4>
+    <form action="/create" method="POST">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <label> Name:</label> <input type="text" name="product[name]" placeholder="Name">
+    <br>
+    <br>
+    <label> Amount:</label> <input type="number" min="0.00" step="0.01" name="product[amount]">
+    <br>
+    <br>
+    <button type="submit">Sell</button>
+    </form>
+
+<h6>Your products that are not yet sold:</h6>
+<table>
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Date Posted</th>
+        <th>Amount</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+    <% @product.each do |product|%><!--|this| should match the product.name-->
+        <td><%=product.name%></td>
+        <td><%=product.created_at%></td>
+        <td><%=product.amount%></td>
+        <td><a href="">Remove</a></td>
+        <br>
+        <% end %>
+        </td>
+    </tbody>
+</table>
+<h6>Sales:</h6>
+    <table>
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Date Bought</th>
+        <th>Buyer</th>
+        <th>Amount</th>
+    </thead>
+    <tbody>
+    <% @product.each do |product|%><!--|this| should match the product.name-->
+        <td><%=product.name%></td>
+        <td><%=product.updated_at%></td>
+        <td>Mark</td>  
+        <td><%=product.amount%></td> 
+        <br>
+        <% end %>
+        </td>
+    </tbody>
+</table>
+<h6>Purchases:</h6>
+    <table>
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Date Bought</th>
+        <th>Seller</th>
+        <th>Amount</th>
+    </thead>
+    <tbody>
+    <% @product.each do |product|%><!--|this| should match the product.name-->
+        <td><%=product.name%></td>
+        <td><%=product.updated_at%></td>
+        <td><%=product.seller%></td>
+        <td><%=product.amount%></td>
+        <br>
+        <% end %>
+        </td>
+    </tbody>
+</table>
+
+<h4> Total: $1,000.00 </h4>
+
+    
