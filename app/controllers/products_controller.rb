@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
     def dashboard
         @user = User.find(session[:user_id])
         @product = Product.all
+        @sold_products = @user.sold_products
+        @bought_products = @user.bought_products
         render 'dashboard'
     end
     def show
@@ -20,6 +22,7 @@ class ProductsController < ApplicationController
         @product = Product.new(product_params)
         @user = User.find(session[:user_id])
         @product.user = @user
+        @from_user_id = User.find(session[:user_id])
 
         if @product.save
         redirect_to "/dashboard", notice: "You have successfully created a Product!"
@@ -28,17 +31,6 @@ class ProductsController < ApplicationController
         redirect_to "/dashboard"
     end
   end
-
-#     def create
-#         product = Product.new(name:params[:name], 
-#         if message.save
-#             redirect_to '/messages/show/outbox'  
-#         else
-#             flash[:errors] = message.errors.full_messages
-#             redirect_to '/messages/new'
-#         end
-#     end               
-# end
 
   private
     def product_params

@@ -2,12 +2,14 @@
 
 one:
   name: MyString
-  seller: MyString
   amount: 9.99
   user: one
+  from_user_id: 1
+  to_user_id: 1
 
 two:
   name: MyString
-  seller: MyString
   amount: 9.99
   user: two
+  from_user_id: 1
+  to_user_id: 1

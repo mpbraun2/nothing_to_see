@@ -1,27 +1,31 @@
-<h6> Hi (USER)</h6>
+<h3> Hi <%=@user.first_name%></h3>
 <div id=topbar>
     <a href="/dashboard/<%=@user_id%>">Go to Dashboard</a>
     <a href="/">Log Out</a>
+</div>
+<div id="sell">
 <h1>All Products</h1>
 <table>
   <thead>
-  <tr>
-    <th>Product</th>
-    <th>Seller</th>
-    <th>Date Posted</th>
-    <th>Amount</th>
-    <th>Action</th>
+  <tr id="headers">
+    <th> Product </th>
+    <th> Seller </th>
+    <th> Date Posted </th>
+    <th> Amount </th>
+    <th> Action </th>
   </tr>
   </thead>
     <tbody>
+    <tr>
   <% @product.each do |product|%><!--|this| should match the product.name-->
   <td><%=product.name%></td>
-  <td><%=product.seller%></td>
-  <td><%=product.created_at%></td>
+  <td><%=product.from_user.email%></td>
+  <td><%=product.created_at.strftime("%m/%d/%Y")%></td>
   <td><%=product.amount%></td>
   <td><a href="">Buy</a></td>
-<br>
+</tr>
 <% end %>
   </td>
   </tbody>
 </table>
+</div>

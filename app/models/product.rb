@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :user
-  validates :name, presence: true, length: {minimum: 2}
+  belongs_to :from_user,
+    class_name: 'User'
+  belongs_to :to_user,
+    class_name: 'User'
 end

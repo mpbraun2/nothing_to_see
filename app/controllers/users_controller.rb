@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def signout
+  def logout
     reset_session
     redirect_to '/'
   end
